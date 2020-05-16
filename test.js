@@ -467,19 +467,17 @@ app.post('/presentation/transformer/transformerData', function (req, res) {
             positionId: i,
             positionName: '竖线' + i,
             isBus: 1, // 0: 表示母线 1: 竖线
-            map: {
-                a: {
-                    val: 0.8, // 相线误差值
-                    status: 2 // 0：正常 1:警告 2:异常
-                },
-                b: {
-                    val: 1, // 相线误差值
-                    status: 1 // 0：正常 1:警告 2:异常
-                },
-                c: {
-                    val: 0.4, // 相线误差值
-                    status: 2 // 0：正常 1:警告 2:异常
-                }
+            adata: {
+                val: 0.8, // 相线误差值
+                status: 2 // 0：正常 1:警告 2:异常
+            },
+            bdata: {
+                val: 1, // 相线误差值
+                status: 1 // 0：正常 1:警告 2:异常
+            },
+            cdata: {
+                val: 0.4, // 相线误差值
+                status: 2 // 0：正常 1:警告 2:异常
             }
         }
         data.push(o)
@@ -490,19 +488,17 @@ app.post('/presentation/transformer/transformerData', function (req, res) {
             positionId: i,
             positionName: '母线' + i,
             isBus: 0, // 0: 表示母线 1: 竖线
-            map: {
-                a: {
-                    val: 0.8, // 相线误差值
-                    status: 2 // 0：正常 1:警告 2:异常
-                },
-                b: {
-                    val: 1, // 相线误差值
-                    status: 1 // 0：正常 1:警告 2:异常
-                },
-                c: {
-                    val: 0.4, // 相线误差值
-                    status: 2 // 0：正常 1:警告 2:异常
-                }
+            adata: {
+                val: 0.8, // 相线误差值
+                status: 2 // 0：正常 1:警告 2:异常
+            },
+            bdata: {
+                val: 1, // 相线误差值
+                status: 1 // 0：正常 1:警告 2:异常
+            },
+            cdata: {
+                val: 0.4, // 相线误差值
+                status: 2 // 0：正常 1:警告 2:异常
             }
         }
         data.push(o);
@@ -521,7 +517,7 @@ app.post('/web/analysis/influence/data', function (req, res) {
     let columnType = req.body.columnType
     let data;
     switch (columnType) {
-            // 基波频率
+        // 基波频率
         case 'FUNDAMENTAL_FREQUENCY':
             data = wss.createData(49, 50);
             res.json({
