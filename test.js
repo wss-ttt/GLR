@@ -509,6 +509,24 @@ app.post('/presentation/transformer/transformerData', function (req, res) {
         data: data
     });
 })
+
+// 8.互感器画像(监控状态)
+app.post('/presentation/transformer/transformerMonitorState', function(req, res) {
+    let data = []
+    for(let i = 0; i < 3; i++) {
+        let o = {
+            phaseSequence: 'a' + i, // 相线
+            status: 0, // 状态
+            voltageLevel: 110, // 电压等级
+        }
+        data.push(o);
+    }
+    res.json({
+        msg: 'ok',
+        code: 200,
+        data:data
+    })
+})
 /**
  * (三)健康图表相关接口
  * **/
