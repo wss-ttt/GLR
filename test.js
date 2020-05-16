@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 /**
- *  公共
+ *  公共相关的
  * **/
 // 1.传参用的数据字典接口
 app.post('/web/common/columnTypes', function (req, res) {
