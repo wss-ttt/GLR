@@ -884,6 +884,7 @@ app.post("/presentation/sysStation/stationMonitor", (req, res) => {
             address: "衡阳市麻塘",
             commissionDate: null,
             stationId: 1,
+            stationCode: 1,
             stationName: "衡阳站",
             status: 2,
             transformerCount: 24,
@@ -892,21 +893,12 @@ app.post("/presentation/sysStation/stationMonitor", (req, res) => {
             address: "株洲",
             commissionDate: null,
             stationId: 302,
+            stationCode: 2,
             stationName: "株洲站",
             status: 2,
             transformerCount: 0,
         },
     ];
-    //   for (var i = 0; i < 10; i++) {
-    //     let obj = {};
-    //     obj["stationName"] = "站点" + i;
-    //     obj["stationId"] = i;
-    //     obj["status"] = 0;
-    //     obj["address"] = "湖南省某地" + i;
-    //     obj["commissionDate"] = i * 5;
-    //     obj["transformerCount"] = i * 10;
-    //     stationTable.push(obj);
-    //   }
     let stationTables = {
         code: 200,
         data: stationTable,
