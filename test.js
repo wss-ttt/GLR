@@ -398,26 +398,115 @@ app.post('/presentation/maintenanceOrder/maintenanceHistory', function (req, res
 // 5.互感器电参量数据
 app.post('/presentation/sysStation/electricalParameter', function (req, res) {
     let data = []
-    for (let i = 0; i < 21; i++) {
-        let phaseSequence = i % 3 === 0 ? 'a' : (i % 3 === 1 ? 'b' : 'c');
+    for (let i = 1; i <= 6; i++) {
         let o = {
-            measuringTime: '2020-05-05', // 测量时间
-            positionId: i % 7 + 1, // 线路id(1,2,3,4,5,6,7)
-            phaseSequence: phaseSequence, // 相序(a,b,c)
-            fundamentalFrequency: 50.03148, // 基波频率
-            fundamentalAmplitude: 5.98354, // 基波有效值
-            thirdHarmonicAmplitude: 0.02572, // 三次谐波有效值
-            fifthHarmonicAmplitude: 0.02446, // 五次谐波有效值
-            fundamentalPhase: 2133.04, // 基波相位
-            thirdHarmonicPhase: 6947.2, // 三次谐波相位
-            fifthHarmonicPhase: -8459.07, // 五次谐波相位
-            zeroSequenceVoltageImbalanc: 0.00192, // 零序电压不平衡度
-            negativeSequenceVoltageImba: 0.001, // 负序电压不平衡度
-            temperature: 35, // 温度
-            humidity: 20, // 湿度
-            transformerName: '衡阳-1线', // 线路名称
+            positionName: '竖线' + i,
+            positionId: i,
+            positionNum: i,
+            measuringTime: '2020年2月11日20:15:30',
+            // 基波频率
+            fundamentalFrequency: {
+                adata: '50.88888HZ',
+                bdata: '50.88364HZ',
+                cdata: '50.78675HZ'
+            },
+            // 基波有效值
+            fundamentalAmplitude: {
+                adata: '225KV',
+                bdata: '225KV',
+                cdata: '225KV'
+            },
+            // 基波相位
+            fundamentalPhase: {
+                adata: '49.88886分',
+                bdata: '49.88887分',
+                cdata: '49.88888分',
+            },
+            zeroSequenceVoltage: '0.02KV',
+            temperature: '20C',
+            negativeSequenceVoltage: '0.003KV',
+            humidity: '78%RH',
+            // 三次谐波有效值
+            threeHarmonicAmplitude: {
+                adata: '0.02234KV',
+                bdata: '0.02233KV',
+                cdata: '0.22333KV'
+            },
+            // 五次谐波有效值
+            fiveHarmonicAmplitude: {
+                adata: '0.02234KV',
+                bdata: '0.02233KV',
+                cdata: '0.22333KV'
+            },
+            // 三次谐波相位
+            threeHarmonicPhase: {
+                adata: '8093.72分',
+                bdata: '8093.73分',
+                cdata: '8093.74分',
+            },
+            // 五次谐波相位
+            fiveHarmonicPhase: {
+                adata: '8093.72分',
+                bdata: '8093.73分',
+                cdata: '8093.74分',
+            }
         }
         data.push(o)
+    }
+    for (let i = 1; i <= 2; i++) {
+        let o = {
+            positionName: '母线' + i,
+            positionId: i,
+            positionNum: i,
+            measuringTime: '2020年2月11日20:15:30',
+            // 基波频率
+            fundamentalFrequency: {
+                adata: '50.88888HZ',
+                bdata: '50.88364HZ',
+                cdata: '50.78675HZ'
+            },
+            // 基波有效值
+            fundamentalAmplitude: {
+                adata: '225KV',
+                bdata: '225KV',
+                cdata: '225KV'
+            },
+            // 基波相位
+            fundamentalPhase: {
+                adata: '49.88886分',
+                bdata: '49.88887分',
+                cdata: '49.88888分',
+            },
+            zeroSequenceVoltage: '0.02KV',
+            temperature: '20C',
+            negativeSequenceVoltage: '0.003KV',
+            humidity: '78%RH',
+            // 三次谐波有效值
+            threeHarmonicAmplitude: {
+                adata: '0.02234KV',
+                bdata: '0.02233KV',
+                cdata: '0.22333KV'
+            },
+            // 五次谐波有效值
+            fiveHarmonicAmplitude: {
+                adata: '0.02234KV',
+                bdata: '0.02233KV',
+                cdata: '0.22333KV'
+            },
+            // 三次谐波相位
+            threeHarmonicPhase: {
+                adata: '8093.72分',
+                bdata: '8093.73分',
+                cdata: '8093.74分',
+            },
+            // 五次谐波相位
+            fiveHarmonicPhase: {
+                adata: '8093.72分',
+                bdata: '8093.73分',
+                cdata: '8093.74分',
+            }
+        }
+        data.push(o);
     }
     res.json({
         msg: 'ok',
@@ -511,9 +600,9 @@ app.post('/presentation/transformer/transformerData', function (req, res) {
 })
 
 // 8.互感器画像(监控状态)
-app.post('/presentation/transformer/transformerMonitorState', function(req, res) {
+app.post('/presentation/transformer/transformerMonitorState', function (req, res) {
     let data = []
-    for(let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         let o = {
             phaseSequence: 'a' + i, // 相线
             status: 0, // 状态
@@ -524,7 +613,7 @@ app.post('/presentation/transformer/transformerMonitorState', function(req, res)
     res.json({
         msg: 'ok',
         code: 200,
-        data:data
+        data: data
     })
 })
 /**
