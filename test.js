@@ -616,6 +616,59 @@ app.post('/presentation/transformer/transformerMonitorState', function (req, res
         data: data
     })
 })
+
+// 9.电参量折线图(包含a相、b相、c相，三条数据折线图)
+app.post('/presentation/transformer/electricalParameterLine', function(req, res) {
+    let everTime = ['2020-05-09 11:00:00', '2020-05-09 11:00:15', '2020-05-09 11:00:30'];
+    let data = [{
+        name: '衡阳-1线A相',
+        data: [{
+            ydata: 2000,
+            xtime: '2020-05-09 11:00:00'
+        }, {
+            ydata: 1000,
+            xtime: '2020-05-09 11:00:15'
+        }, {
+            ydata: 500,
+            xtime: '2020-05-09 11:00:30'
+        }]
+    }, {
+        name: '衡阳-1线B相',
+        data: [{
+            ydata: 1000,
+            xtime: '2020-05-09 11:00:00'
+        }, {
+            ydata: 500,
+            xtime: '2020-05-09 11:00:15'
+        }, {
+            ydata: 800,
+            xtime: '2020-05-09 11:00:30'
+        }]
+    }, {
+        name: '衡阳-1线C相',
+        data: [{
+            ydata: 400,
+            xtime: '2020-05-09 11:00:00'
+        }, {
+            ydata: 2600,
+            xtime: '2020-05-09 11:00:15'
+        }, {
+            ydata: 1000,
+            xtime: '2020-05-09 11:00:30'
+        }]
+    }];
+    res.json({
+        code: 200,
+        msg: 'ok',
+        data: {
+            data,
+            min: -1000,
+            max: 3500,
+            everTime
+        }
+    });
+})
+
 /**
  * (三)健康图表相关接口
  * **/
