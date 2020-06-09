@@ -231,16 +231,44 @@ app.post('/presentation/sysStation/stationRank', function (req, res) {
 })
 // 2.变电站基础信息表
 app.post('/presentation/sysStation/basicsInfo', function (req, res) {
-    let data = {
-        mergerName: '株洲', // 所属地区
-        commissionDate: '', // 投运时间
-        stationType: 0, // 变电站类型
-        voltageLevel: 380, // 变电站电压等级
-        bustransformer220kV: 1, // 220KV计量母线互感器组数
-        bustransformer110kV: 1, // 110KV计量母线互感器组数
-        lineTransformer220kV: 1, // 220KV计量线路互感器组数
-        lineTransformer110kV: 1 // 110KV计量线路互感器组数
-    };
+    let data = [
+        {
+          name: '投运时间',
+          value: '2020.04.22'
+        },
+        {
+          name: '所属区域',
+          value: '湖南省怀化市某镇'
+        },
+        {
+          name: '站点类型',
+          value: 1
+        },
+        {
+          name: '变电站电压等级',
+          value: '220kV'
+        },
+        {
+          name: '220kV计量母线互感器组数',
+          value: '3组'
+        },
+        {
+          name: '110kV计量母线互感器组数',
+          value: '1组'
+        },
+        {
+          name: '220kV计量线路互感器组数',
+          value: '3组'
+        },
+        {
+          name: '110kV计量线路互感器组数',
+          value: '1组'
+        } /* ,
+        {
+          name: '550kV计量线路互感器组数',
+          value: '1组'
+        } */
+      ]
     res.json({
         msg: 'ok',
         code: 200,
